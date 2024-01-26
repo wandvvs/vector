@@ -83,6 +83,17 @@ inline void emplace_back_test()
     std::cout << "[+] emplace_back_test" << std::endl;
 }
 
+inline void move_push_back_test()
+{
+    vector<std::string> vec;
+    std::string str = "Hello";
+    vec.push_back(std::move(str));
+    assert(vec[0] == "Hello");
+    assert(str != "Hello");
+
+    std::cout << "[+] move_push_back_test" << std::endl;
+}
+
 inline void tests()
 {
     push_back_test();
@@ -91,4 +102,5 @@ inline void tests()
     move_ctor_test();
     operator_equal_move_test();
     emplace_back_test();
+    move_push_back_test();
 }

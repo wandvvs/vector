@@ -112,6 +112,16 @@ public:
         sz++;
     }
 
+    void push_back(T&& value)
+    {
+        if(sz == cap)
+        {
+            reserve((cap == 0) ? 1 : cap*2);
+        }
+        Traits::construct(alloc, arr+sz, std::move(value));
+        sz++;
+    }
+
     T& operator[](size_t index)
     {
         return arr[index];
